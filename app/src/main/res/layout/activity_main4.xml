@@ -44,22 +44,26 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnCong"
             android:onClick="PhepTinh"
+            android:drawableBottom="@drawable/baseline_add_24"
             android:text="Cộng" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/baseline_minimize_24"
             android:id="@+id/btnTru"
             android:onClick="PhepTinh"
             android:text="Trừ" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/baseline_close_24"
             android:id="@+id/btnNhan"
             android:onClick="PhepTinh"
             android:text="Nhân" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableBottom="@drawable/baseline_percent_24"
             android:id="@+id/btnChia"
             android:onClick="PhepTinh"
             android:text="Chia" />
