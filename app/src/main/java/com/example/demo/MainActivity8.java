@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,11 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity7 extends AppCompatActivity {
+public class MainActivity8 extends AppCompatActivity {
     private EditText edtMaSP, edtTenSP, edtGiaSP;
     private Spinner spLoaiSP;
     private List<String> data_lsp = new ArrayList<>();
@@ -23,19 +24,20 @@ public class MainActivity7 extends AppCompatActivity {
     private ImageView ivHinh;
     private Button btnThem, btnXoa, btnSua, btnThoat;
     private ListView lvDanhSach;
+    private DatabaseSP dbSanPham;
     private int index;
     List<SanPham> data_sp = new ArrayList<>();
     CustomAdapterSanPham adapter_sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main7);
+        setContentView(R.layout.activity_main8);
         Init();
         setEvent();
     }
 
     private void setEvent() {
-
+        dbSanPham = new DatabaseSP(this);
         KhoiTao();
 
         adapter_lsp = new ArrayAdapter(this, android.R.layout.simple_list_item_1, data_lsp);
@@ -61,12 +63,15 @@ public class MainActivity7 extends AppCompatActivity {
         });
         adapter_sp = new CustomAdapterSanPham(this, R.layout.layout_item_sp, data_sp);
         lvDanhSach.setAdapter(adapter_sp);
+//        DocDL();
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ThemDL();
+                DocDL();
             }
         });
+
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -92,16 +97,19 @@ public class MainActivity7 extends AppCompatActivity {
         lvDanhSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                data_sp.remove(i);
-                adapter_sp.notifyDataSetChanged();
+                SanPham sp = data_sp.get(i);
+                dbSanPham.XoaDL(sp);
+                DocDL();
                 return false;
             }
         });
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                data_sp.remove(index);
-                adapter_sp.notifyDataSetChanged();
+                SanPham sp = new SanPham();
+                sp.setMaSP(edtMaSP.getText().toString());
+                dbSanPham.XoaDL(sp);
+                DocDL();
             }
         });
         btnSua.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +120,16 @@ public class MainActivity7 extends AppCompatActivity {
                 sp.setTenSP(edtTenSP.getText().toString());
                 sp.setGiaSP(edtGiaSP.getText().toString());
                 sp.setLoaiSP(spLoaiSP.getSelectedItem().toString());
-                adapter_sp.notifyDataSetChanged();
+                dbSanPham.SuaDL(sp);
+                DocDL();
             }
         });
+    }
+
+    private void DocDL() {
+        data_sp.clear();
+        data_sp.addAll(dbSanPham.DocDL());
+        adapter_sp.notifyDataSetChanged();
     }
 
     private void ThemDL() {
@@ -123,14 +138,20 @@ public class MainActivity7 extends AppCompatActivity {
         sp.setTenSP(edtTenSP.getText().toString());
         sp.setGiaSP(edtGiaSP.getText().toString());
         sp.setLoaiSP(spLoaiSP.getSelectedItem().toString());
-        data_sp.add(sp);
-        adapter_sp.notifyDataSetChanged();
+        dbSanPham.ThemDL(sp);
+        Toast.makeText(this, "Them thanh cong", Toast.LENGTH_SHORT).show();
     }
 
     private void KhoiTao() {
         data_lsp.add("SamSung");
         data_lsp.add("Iphone");
         data_lsp.add("Nokia");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DocDL();
     }
 
     private void Init(){
@@ -144,5 +165,6 @@ public class MainActivity7 extends AppCompatActivity {
         btnSua = findViewById(R.id.btnSua);
         btnThoat = findViewById(R.id.btnThoat);
         lvDanhSach = findViewById(R.id.lvSP);
+
     }
 }

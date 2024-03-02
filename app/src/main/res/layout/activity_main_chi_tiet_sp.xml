@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity7">
+    tools:context=".MainChiTietSP">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#E49014"
         android:gravity="center"
-        android:text="Nhóm 9 - Bài 7"
+        android:text="Chi tiết sản phẩm"
         android:textColor="#EA1414"
         android:textSize="30sp" />
 
@@ -37,28 +37,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/spLoaiSP"/>
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:id="@+id/ivHinh"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thêm"
-            android:id="@+id/btnThem"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,16 +52,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thoát"
-            android:id="@+id/btnThoat"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lvSP"/>
+            android:text="Quay Lại"
+            android:id="@+id/btnBack"/>
     </LinearLayout>
 </LinearLayout>

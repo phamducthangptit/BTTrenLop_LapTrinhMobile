@@ -1,6 +1,8 @@
 package com.example.demo;
 
-public class SanPham {
+import java.io.Serializable;
+
+public class SanPham implements Serializable {
     private String maSP;
     private String tenSP;
     private String giaSP;

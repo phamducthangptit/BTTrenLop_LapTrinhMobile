@@ -1,10 +1,12 @@
 package com.example.demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +30,7 @@ public class CustomAdapterSanPham extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
+        Button btnChiTiet = convertView.findViewById(R.id.btnChiTiet);
         ImageView ivHinh = convertView.findViewById(R.id.ivHinh);
         TextView tvTenSP = convertView.findViewById(R.id.tvTenSP);
         SanPham sp = data.get(position);
@@ -38,6 +41,14 @@ public class CustomAdapterSanPham extends ArrayAdapter {
             ivHinh.setImageResource(R.drawable.iphone);
         if(sp.getLoaiSP().equals("Nokia"))
             ivHinh.setImageResource(R.drawable.nokia);
+        btnChiTiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainChiTietSP.class);
+                intent.putExtra("sp", sp);
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 }
