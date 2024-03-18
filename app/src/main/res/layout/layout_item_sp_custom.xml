@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<ImageView
+    android:layout_gravity="center"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/samsung"
+    android:id="@+id/ivHinh"/>
+    <TextView
+        android:layout_marginTop="-40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Tên sp"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:id="@+id/tvTenSP"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="Giỏ hàng"
+        android:focusable="false"
+        android:id="@+id/btnGioHang" />
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainChiTietSP extends AppCompatActivity {
     private EditText edtMaSP, edtTenSP, edtGiaSP;
@@ -42,6 +43,7 @@ public class MainChiTietSP extends AppCompatActivity {
                 sp.setTenSP(edtTenSP.getText().toString());
                 sp.setGiaSP(edtGiaSP.getText().toString());
                 dbSanPham.SuaDL(sp);
+                Toast.makeText(MainChiTietSP.this, "Sửa thành công", Toast.LENGTH_SHORT);
             }
         });
         btnXoa.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +51,7 @@ public class MainChiTietSP extends AppCompatActivity {
             public void onClick(View view) {
                 dbSanPham.XoaDL(sp);
                 onBackPressed();
+                Toast.makeText(MainChiTietSP.this, "Xóa thành công", Toast.LENGTH_SHORT);
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
