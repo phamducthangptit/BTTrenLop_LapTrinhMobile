@@ -67,6 +67,8 @@ public class MainActivity10 extends AppCompatActivity {
     private void DocDL() {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity10.this);
         String url = "https://api.github.com/users";
+        data.clear();
+        data_all.clear();
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override

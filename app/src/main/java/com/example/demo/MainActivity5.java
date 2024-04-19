@@ -17,6 +17,7 @@ public class MainActivity5 extends AppCompatActivity {
     CheckBox cbChoiGame, cbDocSach, cbDocBao;
     Button btnThoat, btnNhapLai, btnDangKi;
     TextView tvThongTin;
+    private String mgs = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,6 @@ public class MainActivity5 extends AppCompatActivity {
     }
 
     public void setEvent(){
-
         btnThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,11 +43,12 @@ public class MainActivity5 extends AppCompatActivity {
                 cbDocBao.setChecked(false);
                 cbDocSach.setChecked(false);
                 tvThongTin.setText("");
+                mgs = "";
                 edtHoTen.requestFocus();
             }
         });
         btnDangKi.setOnClickListener(new View.OnClickListener() {
-            String mgs = "";
+
             @Override
             public void onClick(View view) {
                 mgs += "\nThông tin";
@@ -70,7 +71,7 @@ public class MainActivity5 extends AppCompatActivity {
                     mgs += cbDocSach.getText().toString() + " ";
                 }
                 if(cbDocBao.isChecked()){
-                    mgs += cbDocSach.getText().toString() + " ";
+                    mgs += cbDocBao.getText().toString() + " ";
                 }
                 mgs += "\n";
                 tvThongTin.setText(mgs);
